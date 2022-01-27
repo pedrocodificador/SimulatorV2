@@ -1,13 +1,13 @@
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { CadastroPageForm } from "./cadastro.page.form";
+import { LoginPageForm } from "./login.page.form";
 
-describe('CadastroPageForm', () => {
+describe('LoginPageForm', () => {
 
-    let loginPageForm: CadastroPageForm;
+    let loginPageForm: LoginPageForm;
     let form: FormGroup;
 
     beforeEach(() => {
-        loginPageForm = new CadastroPageForm(new FormBuilder());
+        loginPageForm = new LoginPageForm(new FormBuilder());
         form = loginPageForm.createForm();
     })
 
