@@ -1,9 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cadastro</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button title=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastrar-se</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <form [formGroup]="form">
+  <div class="flex-center">
+  <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nome Completo:</ion-label>
+        <ion-input type="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">email:</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <app-error-message  [field]="form.get('email')" error="required" message="Email é obrigatório"></app-error-message>
+      <app-error-message  [field]="form.get('email')" error="email" message="Email é invalido"></app-error-message>
+
+
+      <ion-item>
+        <ion-label position="floating">senha:</ion-label>
+        <ion-input type="password"  formControlName="password"></ion-input>
+      </ion-item>
+      <app-error-message  [field]="form.get('password')" error="required" message="Senha é obrigatória"></app-error-message>
+
+      <ion-button color="success"  size="full" [disabled]="!form.valid" (click)="cadastro()"><b>Cadastrar</b></ion-button>
+</ion-card-content>
+</div>
+
+</form>
 
 </ion-content>

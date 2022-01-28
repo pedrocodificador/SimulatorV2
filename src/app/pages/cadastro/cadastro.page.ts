@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { CadastroPageForm } from './cadastro.page.form';
+
 
 @Component({
   selector: 'app-cadastro',
@@ -6,10 +10,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cadastro.page.scss'],
 })
 export class CadastroPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+//esse codigo faz parte da autenticação
+user = {} as User;

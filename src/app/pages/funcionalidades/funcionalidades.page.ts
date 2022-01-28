@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-funcionalidades',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FuncionalidadesPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
+  }
+  funcionalidades(){
+     this.router.navigate(['funcionalidades']);
+  }
+  funcionalidade1(){
+    this.router.navigate(['meus-dados']);
+  }
+  funcionalidade2(){
+    this.router.navigate(['tela-jogo']);
   }
 
 }

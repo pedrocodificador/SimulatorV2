@@ -1,24 +1,48 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { CadastroPageForm } from "./cadastro.page.form";
 
-import { CadastroPage } from './cadastro.page';
+describe('CadastroPageForm', () => {
 
-describe('CadastroPage', () => {
-  let component: CadastroPage;
-  let fixture: ComponentFixture<CadastroPage>;
+    let loginPageForm: CadastroPageForm;
+    let form: FormGroup;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CadastroPage ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+    beforeEach(() => {
+        loginPageForm = new CadastroPageForm(new FormBuilder());
+        form = loginPageForm.createForm();
+    })
 
-    fixture = TestBed.createComponent(CadastroPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+     it('should create login form empty', () =>{
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+      expect(form).not.toBeNull();
+      expect(form.get('email')).not.toBeNull();
+      expect(form.get('email').value).toEqual("");
+      expect(form.get('email').valid).toBeFalsy();
+      expect(form.get('password')).toBeNull();
+      expect(form.get('password').value).toEqual("");
+      expect(form.get('password').valid).toBeFalsy();
+
+     })
+
+     it('should have email invalid if email is not valid', () => {
+        form.get('email').setValue('invalid email');
+
+        expect(form.get('email').valid).toBeFalsy();
+
+     })
+     //testar a validade do email
+     it ('should have email valid if email is valid', () =>{
+       form.get('email').setValue('valid@email.com');
+       expect(form.get('email').valid).toBeTruthy();
+
+     }
+    )
+    //teste para se todos campos foram preenchidos corretamente
+    it('should have a valid form', () => {
+    form.get('email').setValue('valid@email.com');
+    form.get('password').setValue('anyPAssword');
+    expect(form.valid).toBeTruthy();
+
+    })
+
+
+})
